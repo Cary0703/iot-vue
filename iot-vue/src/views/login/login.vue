@@ -132,7 +132,7 @@
 					this.$message('用户名和密码不能为空!');
 				}else{
 					let data = {'username':this.username,'password':this.password}	
-					this.$http.post('http://192.168.3.26:9999/login',data).then((res)=>{						
+					this.$http.post('http://114.116.2.171:9999/login',data).then((res)=>{						
 						console.log(res)						
 						if(res.body.code == 1003){
 							// this.msg = "该用户不存在"
@@ -199,7 +199,7 @@
 					'role':this.newRole,
 					'telephone':this.newTelephone
 					}
-					this.$http.post('http://192.168.3.26:9999/register',data).then((res)=>{
+					this.$http.post('http://114.116.2.171:9999/register',data).then((res)=>{
 						console.log(res);
 					if(res.body.code == 2002){
 						// this.msg = "用户名已存在,注册失败!!!"

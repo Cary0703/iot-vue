@@ -63,7 +63,7 @@ import message from 'element-ui'
 			}
 		},
 		mounted(){
-			this.$http.get('http://192.168.3.26:9999/users').then((res)=>{
+			this.$http.get('http://114.116.2.171:9999/users').then((res)=>{
 				this.user = res.body.data
 				console.log(res)
 				})
@@ -82,7 +82,7 @@ import message from 'element-ui'
 			        cancelButtonText: '取消',
 			        type: 'warning'
 			      }).then(async() => {
-					this.$http.post('http://192.168.3.26:9999/delete/user/'+username,data).then((res)=>
+					this.$http.post('http://114.116.2.171:9999/delete/user/'+username,data).then((res)=>
 					  {	  console.log(res)
 						  if(res.body.code == 3004){
 						  	// return this.$message.Error('当前用户非管理员，无法操作!');
