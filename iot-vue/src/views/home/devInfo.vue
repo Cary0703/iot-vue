@@ -16,17 +16,17 @@
    			  {{ scope.row.name }}
    			</template>
            </el-table-column>
-           <el-table-column label="Key" width="220" align="center">
+           <el-table-column label="Key" width="210" align="center">
    			<template #default="scope">
    			  {{ scope.row.key }}
    			</template>
    		</el-table-column>
-   		<el-table-column label="设备信息" width="220" align="center">
+   		<el-table-column label="设备信息" width="210" align="center">
    			<template #default="scope">
    			  {{ scope.row.msg }}
    			</template>
    		</el-table-column>
-   		<el-table-column label="操作行为" align="center" width="220">
+   		<el-table-column label="操作行为" align="center" width="100">
    		<template #default="scope">
           {{ scope.row.action }}
    		</template>
@@ -82,6 +82,38 @@ import message from 'element-ui'
                 let data = {'uid':row.uid, 'key':row.key, 'action':row.action, 'status':row.status}
                 this.$http.post('http://114.116.2.171:9990/update_action', data).then((res) => {
                   console.log(res)
+                  if(res.data.code == 2001){
+                    this.$message({
+                              showClose: true,
+                              message: '设备uid或key不能为空!',
+                              type:'error'
+                            });
+                  }
+                  else if(res.data.code == 2002){
+                    this.$message({
+                              showClose: true,
+                              message: '设备不存在,请检查uid或key',
+                              type:'error'
+                            });
+                  }else if(res.data.code == 2003){
+                    this.$message({
+                              showClose: true,
+                              message: '该操作已不存在,请重新获取可操作指令!',
+                              type:'error'
+                            });
+                  }else if(res.data.code == 2004){
+                    this.$message({
+                              showClose: true,
+                              message: '该操作已经记录,无需重复操作!',
+                              type:'warning'
+                            });
+                  }else{
+                    this.$message({
+                              showClose: true,
+                              message: '该操作记录成功,等待设备接入更新!',
+                              type:'success'
+                            });
+                  }
                   // console.log(row.id)
                 })
                 if (action === 'confirm'){
@@ -96,13 +128,14 @@ import message from 'element-ui'
                 } else {
                   done();
                 }
-              }
-            }).then(action => {
-              this.$message({
-                type: 'success',
-                message: '提交成功'
-              });
-            });
+               }
+             })
+            // }).then(action => {
+            //   // this.$message({
+            //   //   type: 'success',
+            //   //   message: '提交成功'
+            //   // });
+            // });
           }
         }
   }
