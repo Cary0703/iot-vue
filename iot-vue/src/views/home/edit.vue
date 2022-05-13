@@ -83,7 +83,7 @@
 							'admin_user':localStorage.getItem('username'),
 							'token':localStorage.getItem('token')}
 			 // const id = this.$route.params.id
-			 this.$http.put('http://192.168.3.26:9990/update/user/'+this.$route.params.id,data)
+			 this.$http.put('http://114.116.2.171:9990/update/user/'+this.$route.params.id,data)
 			 .then((resp)=>{
 				 console.log(resp)
 				 if(resp.body.code == 4001){

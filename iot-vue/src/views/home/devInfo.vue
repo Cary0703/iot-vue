@@ -63,7 +63,7 @@ import message from 'element-ui'
     },
     mounted(){
       var vm = this;
-      this.$http.get('http://192.168.3.26:9990/devices').then((res)=>{
+      this.$http.get('http://114.116.2.171:9990/devices').then((res)=>{
       	vm.devInfo = res.body.data
       	console.log(res)
       	})
@@ -80,7 +80,7 @@ import message from 'element-ui'
               cancelButtonText: '取消',
               beforeClose: (action, instance, done) => {
                 let data = {'uid':row.uid, 'key':row.key, 'action':row.action, 'status':row.status}
-                this.$http.post('http://192.168.3.26:9990/update_action', data).then((res) => {
+                this.$http.post('http://114.116.2.171:9990/update_action', data).then((res) => {
                   console.log(res)
                   // console.log(row.id)
                 })
