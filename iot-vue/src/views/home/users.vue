@@ -26,7 +26,6 @@
 				<template slot-scope="scope">
 				<el-button-group>
 				    <el-button
-					  :plain="true"
 				      type="primary"
 				      icon="el-icon-edit"
 				      size="mini"
@@ -34,7 +33,6 @@
 				    >修改
 				    </el-button>
 				    <el-button
-					  :plain="true"
 				      type="danger"
 				      icon="el-icon-delete"
 				      size="mini"
@@ -57,13 +55,13 @@ import message from 'element-ui'
 			return{
 				user:[],
 				admin_user:'',
-				token:'',
+				token:''
 				// msg : '',
 				// showmsg : false
 			}
 		},
 		mounted(){
-			this.$http.get('http://114.116.2.171:9999/users').then((res)=>{
+			this.$http.get('http://192.168.3.26:9990/users').then((res)=>{
 				this.user = res.body.data
 				console.log(res)
 				})
@@ -82,7 +80,7 @@ import message from 'element-ui'
 			        cancelButtonText: '取消',
 			        type: 'warning'
 			      }).then(async() => {
-					this.$http.post('http://114.116.2.171:9999/delete/user/'+username,data).then((res)=>
+					this.$http.post('http://192.168.3.26:9990/delete/user/'+username,data).then((res)=>
 					  {	  console.log(res)
 						  if(res.body.code == 3004){
 						  	// return this.$message.Error('当前用户非管理员，无法操作!');
@@ -113,13 +111,13 @@ import message from 'element-ui'
 							        });
 						  }
 						// this.$message({type: 'success',message: '删除成功!'});
-						this.getUsersList();
-					  })         
+						// this.getUsersList();
+					  })
 			      }).catch(() => {
-			        this.$message({type: 'info',message: '已取消删除' }); 
+			        this.$message({type: 'info',message: '已取消删除' });
 			  });
-		  
-		 }	
+
+		 }
 	   }
 	}
 </script>

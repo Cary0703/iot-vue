@@ -31,13 +31,13 @@
 				<el-input prefix-icon="el-icon-lock" size="normal" type="password" v-model="password"
 				    auto-complete="off"
 				    placeholder="请输入密码"
-					@keyup.enter="login()"></el-input>
+            @keyup.enter="login()" />
 				</el-form-item>
-				<el-button :plain="true" size="normal" type="primary" style="width: 100%;" @click="login()">登录</el-button>
+				<el-button size="normal" type="primary" style="width: 100%;" @click="login()">登录</el-button>
 				<span v-on:click="ToRegister">没有账号？马上注册</span>
 			</el-form>
 			</div>
-			
+
 			<div class="register-wrap" v-show="showRegister">
 			<el-form class="loginContainer">
 				<H3 class="loginTitle">物联网设备接入管理平台</H3>
@@ -63,7 +63,7 @@
 					@keyup.enter="register"
 					placeholder="请输入手机号"></el-input>
 				</el-form-item>
-				<el-button :plain="true" size="normal" type="primary" style="width: 100%;" @click="register">注册</el-button>
+				<el-button size="normal" type="primary" style="width: 100%;" @click="register">注册</el-button>
 				<span v-on:click="ToLogin">已有账号？马上登录</span>
 			</el-form>
 			</div>
@@ -126,14 +126,14 @@
 			}
 		},
 		methods: {
-			login(){ 
+			login(){
 				if(this.username == "" || this.password == ""){
 					// alert("请输入用户名或密码")
 					this.$message('用户名和密码不能为空!');
 				}else{
-					let data = {'username':this.username,'password':this.password}	
-					this.$http.post('http://114.116.2.171:9999/login',data).then((res)=>{						
-						console.log(res)						
+					let data = {'username':this.username,'password':this.password}
+					this.$http.post('http://192.168.3.26:9990/login',data).then((res)=>{
+						console.log(res)
 						if(res.body.code == 1003){
 							// this.msg = "该用户不存在"
 							// this.showmsg = true
@@ -154,7 +154,7 @@
 						// else if(res.body.login_info.role == 0){
 						// 	// this.msg = "欢迎管理员"
 						// 	// this.showmsg = true
-						// 	this.$router.push('/main')}							
+						// 	this.$router.push('/main')}
 						else{
 							// this.msg = "登录成功"
 							// this.showmsg = true
@@ -199,7 +199,7 @@
 					'role':this.newRole,
 					'telephone':this.newTelephone
 					}
-					this.$http.post('http://114.116.2.171:9999/register',data).then((res)=>{
+					this.$http.post('http://192.168.3.26:9990/register',data).then((res)=>{
 						console.log(res);
 					if(res.body.code == 2002){
 						// this.msg = "用户名已存在,注册失败!!!"
@@ -233,10 +233,6 @@
 							          message: '恭喜你，注册成功!',
 							          type: 'success'
 							        });
-							this.username = ''
-							this.password = ''
-							this.role = ''
-							this.telephone = ''
 							setTimeout(function(){
 								this.showRegister = false
 								this.showLogin = true
@@ -244,7 +240,7 @@
 								 this.$router.push("/")
 							}.bind(this),1000)
 						}
-					}).catch((res)=>{ 
+					}).catch((res)=>{
 						console.log(err);
 					})
 				}

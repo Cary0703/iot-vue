@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<!-- <p v-show="showmsg">{{msg}}</p> -->
-	<el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" 
+	<el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm"
 	label-width="100px" class="demo-ruleForm">
 	  <el-form-item label="手机号" prop="telephone">
 	    <el-input type="text" v-model="ruleForm.telephone"></el-input>
@@ -27,12 +27,12 @@
 	        if (!value) {
 	          return callback(new Error('手机号不能为空'))
 	        }
-			const tel = /^1[3456789]\d{9}$/;	        
+			const tel = /^1[3456789]\d{9}$/;
 	          if (!tel.test(value)) {
 	            callback(new Error('请输入有效的手机号码'))
 	        } else {
 	            callback()
-	        }	        
+	        }
 	      };
 	      var validatePass = (rule, value, callback) => {
 	        if (value === '') {
@@ -83,7 +83,7 @@
 							'admin_user':localStorage.getItem('username'),
 							'token':localStorage.getItem('token')}
 			 // const id = this.$route.params.id
-			 this.$http.put('http://114.116.2.171:9999/update/user/'+this.$route.params.id,data)
+			 this.$http.put('http://192.168.3.26:9990/update/user/'+this.$route.params.id,data)
 			 .then((resp)=>{
 				 console.log(resp)
 				 if(resp.body.code == 4001){
@@ -131,7 +131,7 @@
 	        //     return false;
 	        //   }
 	        // });
-			
+
 	      },
 	      resetForm(formName) {
 	        this.$refs[formName].resetFields();
@@ -141,7 +141,7 @@
 </script>
 
 <style>
-	
+
 </style>
 
 <!-- <template>
@@ -169,14 +169,14 @@
 				'telephone':this.telephone,
 				'token':this.token,
 				'password':this.password}
-			
+
 			}
 		}
 	  }
 </script>
 <style>
-	
-</style> 
+
+</style>
 
 <!-- <template>
 	<div>
@@ -184,8 +184,7 @@
 	</div>
 </template>
 <script>
-	
+
 </script>
 <style> -->
-	
-</style>
+

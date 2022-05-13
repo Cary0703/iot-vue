@@ -23,7 +23,7 @@
 		},
 		mounted(){
 			// let list = {"username":'',"role":'',"telephone":''}
-			this.$http.get('http://114.116.2.171:9999/users').then((res)=>{
+			this.$http.get('http://192.168.3.26:9990/users').then((res)=>{
 				this.list = res.body.data
 				console.log(res)
 			})

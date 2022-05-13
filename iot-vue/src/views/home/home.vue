@@ -20,33 +20,33 @@
 						 <i class="el-icon-s-check"></i>
 						 用户信息
 						 </el-menu-item>
-	               </el-menu-item-group>				   
+	               </el-menu-item-group>
 	             </el-submenu>
 				 <el-menu-item index="2" @click="devManagement()">
-				         <i class="el-icon-s-tools"></i>
-				         <span slot="title">设备管理</span>
+				         <i class="el-icon-s-data"></i>
+				         <span slot="title">添加设备</span>
 				       </el-menu-item>
 				       <!-- <el-menu-item index="3" disabled>
 				         <i class="el-icon-document"></i>
 				         <span slot="title">导航三</span>
 				       </el-menu-item> -->
 				       <el-menu-item index="3" @click="devInformation()">
-				         <i class="el-icon-s-data"></i>
-				         <span slot="title">设备信息</span>
+				         <i class="el-icon-s-tools"></i>
+				         <span slot="title">设备管理</span>
 				       </el-menu-item>
 	           </el-menu>
 		  </el-aside>
 		<el-container>
 		  <el-header style="text-align: right; font-size: 25px;">
 		        <el-dropdown>
-		          <i class="el-icon-s-unfold" style="margin-right: 30px; font-size: 26px; 
+		          <i class="el-icon-s-unfold" style="margin-right: 30px; font-size: 30px;
 				  color: #fff;"></i>
 		          <el-dropdown-menu slot="dropdown" >
 		            <el-dropdown-item>
-						<router-link to="/logout" style="color: #8b0000 ">退出</router-link>  			
+						<router-link to="/logout" style="color: #8b0000 ">退出</router-link>
 					</el-dropdown-item>
 		          </el-dropdown-menu>
-		        </el-dropdown>	
+		        </el-dropdown>
 		  </el-header>
 		  <el-main>
 			  <router-view></router-view>
@@ -81,7 +81,7 @@
 			}
 		}
 	}
-		
+
 </script>
 
 <style>
@@ -90,7 +90,7 @@
     color: #333;
     line-height: 60px;
   }
-  
+
   .el-aside {
     color: #333;
   }
