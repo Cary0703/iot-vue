@@ -82,14 +82,21 @@ import message from 'element-ui'
 			      }).then(async() => {
 					this.$http.post('http://114.116.2.171:9990/delete/user/'+username,data).then((res)=>
 					  {	  console.log(res)
-						  if(res.body.code == 3004){
+                if(res.body.code == 3003){
+                  this.$message({
+                            showClose: true,
+                            message: 'token口令不正确!',
+                            type: 'warning'
+                          });
+                }
+						  else if(res.body.code == 3004){
 						  	// return this.$message.Error('当前用户非管理员，无法操作!');
 							// this.msg = '当前用户非管理员，无法操作!'
 							// this.showmsg = true
 							this.$message({
 							          showClose: true,
 							          message: '当前用户非管理员，无法操作!',
-							          type: 'warning'
+							          type: 'error'
 							        });
 						  }else if(res.body.code == 3006){
 						  	// return this.$message.Error('不可删除此用户');
@@ -98,7 +105,7 @@ import message from 'element-ui'
 							this.$message({
 							          showClose: true,
 							          message: '不可删除此用户!',
-							          type: 'warning'
+							          type: 'error'
 							        });
 						  }else{
 						  	// this.$message.success('删除成功!!!');

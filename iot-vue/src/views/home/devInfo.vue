@@ -79,43 +79,6 @@ import message from 'element-ui'
               confirmButtonText: '确定',
               cancelButtonText: '取消',
               beforeClose: (action, instance, done) => {
-                let data = {'uid':row.uid, 'key':row.key, 'action':row.action, 'status':row.status}
-                this.$http.post('http://114.116.2.171:9990/update_action', data).then((res) => {
-                  console.log(res)
-                  if(res.data.code == 2001){
-                    this.$message({
-                              showClose: true,
-                              message: '设备uid或key不能为空!',
-                              type:'error'
-                            });
-                  }
-                  else if(res.data.code == 2002){
-                    this.$message({
-                              showClose: true,
-                              message: '设备不存在,请检查uid或key',
-                              type:'error'
-                            });
-                  }else if(res.data.code == 2003){
-                    this.$message({
-                              showClose: true,
-                              message: '该操作已不存在,请重新获取可操作指令!',
-                              type:'error'
-                            });
-                  }else if(res.data.code == 2004){
-                    this.$message({
-                              showClose: true,
-                              message: '该操作已经记录,无需重复操作!',
-                              type:'warning'
-                            });
-                  }else{
-                    this.$message({
-                              showClose: true,
-                              message: '该操作记录成功,等待设备接入更新!',
-                              type:'success'
-                            });
-                  }
-                  // console.log(row.id)
-                })
                 if (action === 'confirm'){
                   instance.confirmButtonLoading = true;
                   instance.confirmButtonText = '执行中...';
@@ -129,13 +92,47 @@ import message from 'element-ui'
                   done();
                 }
                }
+             }).then(async() => {
+               let data = {'uid':row.uid, 'key':row.key, 'action':row.action, 'status':row.status}
+               this.$http.post('http://114.116.2.171:9990/update_action', data).then((res) => {
+                 console.log(res)
+                 if(res.data.code == 2001){
+                   this.$message({
+                             showClose: true,
+                             message: '设备uid或key不能为空!',
+                             type:'error'
+                           });
+                 }
+                 else if(res.data.code == 2002){
+                   this.$message({
+                             showClose: true,
+                             message: '设备不存在,请检查uid或key',
+                             type:'error'
+                           });
+                 }else if(res.data.code == 2003){
+                   this.$message({
+                             showClose: true,
+                             message: '该操作已不存在,请重新获取可操作指令!',
+                             type:'error'
+                           });
+                 }else if(res.data.code == 2004){
+                   this.$message({
+                             showClose: true,
+                             message: '该操作已经记录,无需重复操作!',
+                             type:'warning'
+                           });
+                 }else{
+                   this.$message({
+                             showClose: true,
+                             message: '该操作记录成功,等待设备接入更新!',
+                             type:'success'
+                           });
+                 }
+                 // console.log(row.id)
+               })
+             }).catch(() => {
+               this.$message({type: 'info',message: '已取消修改' });
              })
-            // }).then(action => {
-            //   // this.$message({
-            //   //   type: 'success',
-            //   //   message: '提交成功'
-            //   // });
-            // });
           }
         }
   }
