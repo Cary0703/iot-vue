@@ -86,8 +86,8 @@ import message from 'element-ui'
                     done();
                     setTimeout(() => {
                       instance.confirmButtonLoading = false;
-                    }, 100);
-                  }, 1000);
+                    }, 300);
+                  }, 3000);
                 } else {
                   done();
                 }
@@ -131,7 +131,7 @@ import message from 'element-ui'
                  // console.log(row.id)
                })
              }).catch(() => {
-               this.$message({type: 'info',message: '已取消修改' });
+               this.$message({type: 'info',message: '已取消执行' });
              })
           }
         }

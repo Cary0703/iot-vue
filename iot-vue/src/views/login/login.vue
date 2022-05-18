@@ -202,8 +202,6 @@
 					this.$http.post('http://114.116.2.171:9990/register',data).then((res)=>{
 						console.log(res);
 					if(res.body.code == 2002){
-						// this.msg = "用户名已存在,注册失败!!!"
-						// this.showmsg = true
 						this.$message({
 						          showClose: true,
 						          message: '用户名已存在,注册失败!!!',
