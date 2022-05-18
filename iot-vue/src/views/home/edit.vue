@@ -93,7 +93,18 @@
 					           showClose: true,
 					           message: '不能为空,check it!'
 					         });
-				 }
+				 }else if(resp.body.code == 4002){
+           this.$message({
+                     showClose: true,
+                     message: '当前用户未登录!'
+                   });
+         }
+         else if(resp.body.code == 4003){
+           this.$message({
+                     showClose: true,
+                     message: 'token口令不正确,无法操作!'
+                   });
+         }
 				 else if(resp.body.code == 4004){
 					 // this.msg = "抱歉，您不是管理员，无法进行修改!"
 					 // this.showmsg = true

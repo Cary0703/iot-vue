@@ -85,18 +85,6 @@ router.beforeEach(function(to,from,next){
 		 localStorage.removeItem('token')
 		 localStorage.removeItem('username')
 	 }
-	 // if(to.path === '/users' || to.path === '/edit'){
-		//  const token = localStorage.getItem('token')
-		//  const username = localStorage.getItem('username')
-	 // 	if(token || username){
-	 // 	 next()
-	 // 	}else{
-		// 	next('/')
-	 // 	} 
-	 // }
-	 // else{
-		// 	next()
-		// }
 })
 
 export default router
