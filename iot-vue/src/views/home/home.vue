@@ -26,10 +26,6 @@
 				         <i class="el-icon-s-data"></i>
 				         <span slot="title">添加设备</span>
 				       </el-menu-item>
-				       <!-- <el-menu-item index="3" disabled>
-				         <i class="el-icon-document"></i>
-				         <span slot="title">导航三</span>
-				       </el-menu-item> -->
 				       <el-menu-item index="3" @click="devInformation()">
 				         <i class="el-icon-s-tools"></i>
 				         <span slot="title">设备管理</span>
@@ -85,12 +81,17 @@
 </script>
 
 <style>
+  a {
+    text-decoration: none;
+  }
+  .router-link-active {
+    text-decoration: none;
+  }
   .el-header {
     background-color: #545c64;
     color: #333;
     line-height: 60px;
   }
-
   .el-aside {
     color: #333;
   }
