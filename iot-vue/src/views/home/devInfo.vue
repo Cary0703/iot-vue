@@ -1,12 +1,12 @@
 <template>
   <div>
-   <el-table :data="devInfo" style="width: 100%">
-        <el-table-column label="ID" width="50" align="center">
+   <el-table :data="devInfo" style="width: 100%" max-height="200">
+        <el-table-column fixed label="ID" width="60" align="center">
         <template #default="scope">
           {{ scope.row.id }}
         </template>
         </el-table-column>
-           <el-table-column label="UID" width="90" align="center">
+           <el-table-column label="UID" width="100" align="center">
    			<template #default="scope">
    			  {{ scope.row.uid }}
    			</template>
@@ -16,25 +16,31 @@
    			  {{ scope.row.name }}
    			</template>
            </el-table-column>
-           <el-table-column label="Key" width="210" align="center">
+           <el-table-column label="Key" width="220" align="center">
    			<template #default="scope">
    			  {{ scope.row.key }}
    			</template>
    		</el-table-column>
-   		<el-table-column label="设备信息" width="210" align="center">
+   		<el-table-column label="设备信息" width="220" align="center">
    			<template #default="scope">
    			  {{ scope.row.msg }}
    			</template>
    		</el-table-column>
-   		<el-table-column label="操作行为" align="center" width="100">
+   		<el-table-column label="操作行为" align="center" width="150">
    		<template #default="scope">
           {{ scope.row.action }}
    		</template>
-   	</el-table-column>
-     <el-table-column label="Operation" align="center">
+      </el-table-column>
+      <el-table-column label="报警" align="center" width="150">
+      	<template #default="scope">
+            {{ scope.row.error }}
+      	</template>
+      </el-table-column>
+     <el-table-column label="Operation" align="center" width="260">
        <template #default="scope">
          <el-button
          type="text"
+         size="small"
          @click.prevent="open(scope.row)"
          >
          执行
@@ -57,7 +63,8 @@ import message from 'element-ui'
           // key:'',
           // name:'',
           // msg:'',
-          // status:''
+          // status:'',
+          // error:''
         }]
       }
     },
